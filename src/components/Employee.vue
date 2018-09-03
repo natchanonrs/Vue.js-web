@@ -61,12 +61,13 @@ export default {
   },
   methods: {
     async del () {
-      const response = await CRUDService.delete(this.name)
+      const response = await CRUDService.delete(this.$route.params.id)
       console.log(response.data)
       this.$router.push({name: 'Home'})
     },
     async update () {
       const response = await CRUDService.update(
+        this.$route.params.id,
         {
           name: this.name,
           address: this.address,

@@ -25,17 +25,22 @@ table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
+    table-layout: fixed;
 }
 
-td, th {
+td {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
 }
 
-tr:nth-child(even) {
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
     background-color: #dddddd;
 }
+
 tr:hover {
     background-color: #ffff99;
 }

@@ -25,7 +25,7 @@ export default new Router({
       component: Add
     },
     {
-      path: '/employees/:name',
+      path: '/employees/:id',
       name: 'Employee',
       component: Employee
     }

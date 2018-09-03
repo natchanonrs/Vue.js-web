@@ -7,10 +7,10 @@ export default {
   create (credentials) {
     return Api().post('employees', credentials)
   },
-  delete (name) {
-    return Api().delete(`employees/${name}`)
+  delete (id) {
+    return Api().delete(`employees/${id}`)
   },
-  update (params) {
-    return Api().put(`employees/${params.name}`, params)
+  update (id, params) {
+    return Api().put(`employees/${id}`, params)
   }
 }

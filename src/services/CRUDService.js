@@ -10,7 +10,7 @@ export default {
   delete (name) {
     return Api().delete(`employees/${name}`)
   },
-  update (name) {
-    return Api().put(`employees/${name}`)
+  update (params) {
+    return Api().put(`employees/${params.name}`, params)
   }
 }

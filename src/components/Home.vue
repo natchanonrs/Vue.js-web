@@ -9,54 +9,57 @@
       placeholder="param" />
     <button @click="search">Search</button>-->
     <input type="text" id="searchInput" v-on:keyup="searchFunction ()" placeholder="Search">
-    <p/>
-    <a href='/#/add'>
-      <button>Add</button>
-    </a>
-    <button>Edit</button>
-    <button>Delete</button>
+    <button v-on:click="navigateTo({ name: 'Add'})">Add</button>
     <p/>
     <table id="myTable">
-      <tr>
-        <th>
-          <a v-on:click="sortTable(0)">
-            <span class="glyphicon glyphicon-sort align-right"></span>
-          </a>
-          Name
-        </th>
-        <th>
-          <a v-on:click="sortTable(1)">
-            <span class="glyphicon glyphicon-sort align-right"></span>
-          </a>
-          Address
-        </th>
-        <th>
-          <a v-on:click="sortTable(2)">
-            <span class="glyphicon glyphicon-sort align-right"></span>
-          </a>
-          Phone
-        </th>
-        <th>
-          <a v-on:click="sortTable(3)">
-            <span class="glyphicon glyphicon-sort align-right"></span>
-          </a>
-          Email
-        </th>
-        <th>
-          <a v-on:click="sortTable(4)">
-            <span class="glyphicon glyphicon-sort align-right"></span>
-          </a>
-          Job
-        </th>
-        <th>
-          <a v-on:click="sortTable(5)">
-            <span class="glyphicon glyphicon-sort align-right"></span>
-          </a>
-          Salary
-        </th>
-      </tr>
+      <th>
+        <a v-on:click="sortTable(0)">
+          <span class="glyphicon glyphicon-sort align-right"></span>
+        </a>
+        Name
+      </th>
+      <th>
+        <a v-on:click="sortTable(1)">
+          <span class="glyphicon glyphicon-sort align-right"></span>
+        </a>
+        Address
+      </th>
+      <th>
+        <a v-on:click="sortTable(2)">
+          <span class="glyphicon glyphicon-sort align-right"></span>
+        </a>
+        Phone
+      </th>
+      <th>
+        <a v-on:click="sortTable(3)">
+          <span class="glyphicon glyphicon-sort align-right"></span>
+        </a>
+        Email
+      </th>
+      <th>
+        <a v-on:click="sortTable(4)">
+          <span class="glyphicon glyphicon-sort align-right"></span>
+        </a>
+        Job
+      </th>
+      <th>
+        <a v-on:click="sortTable(5)">
+          <span class="glyphicon glyphicon-sort align-right"></span>
+        </a>
+        Salary
+      </th>
       <tr v-for="employee in employees"
-        :key="employee.name">
+        :key="employee.name" v-on:click="navigateTo({
+          name: 'Employee',
+          params: {
+            name: employee.name,
+            address: employee.address,
+            phone: employee.phone,
+            email: employee.email,
+            job: employee.job,
+            salary: employee.salary
+          }
+        })">
         <td>{{employee.name}}</td>
         <td>{{employee.address}}</td>
         <td>{{employee.phone}}</td>
@@ -83,6 +86,9 @@ export default {
     this.employees = response.data
   },
   methods: {
+    navigateTo (route) {
+      this.$router.push(route)
+    },
     searchFunction () {
       var input, filter, table, tr, td, i, j
       input = document.getElementById('searchInput')

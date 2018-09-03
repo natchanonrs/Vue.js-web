@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Add</h1>
+    <h1>Employee</h1>
     <input
       type="text"
       name="name"
@@ -31,7 +31,9 @@
       name="salary"
       v-model="salary"
       placeholder="Salary" />
-    <button @click="add">Add</button>
+    <p/>
+    <button @click="update">Update</button>
+    <button @click="del">Delete</button>
     <p/>
   </div>
 </template>
@@ -39,6 +41,14 @@
 <script>
 import CRUDService from '@/services/CRUDService'
 export default {
+  async mounted () {
+    this.name = this.$route.params.name
+    this.address = this.$route.params.address
+    this.phone = this.$route.params.phone
+    this.email = this.$route.params.email
+    this.job = this.$route.params.job
+    this.salary = this.$route.params.salary
+  },
   data () {
     return {
       name: '',
@@ -50,15 +60,22 @@ export default {
     }
   },
   methods: {
-    async add () {
-      const response = await CRUDService.create({
-        name: this.name,
-        address: this.address,
-        phone: this.phone,
-        email: this.email,
-        job: this.job,
-        salary: this.salary
-      })
+    async del () {
+      const response = await CRUDService.delete(this.name)
+      console.log(response.data)
+      this.$router.push({name: 'Home'})
+    },
+    async update () {
+      const response = await CRUDService.update(
+        {
+          name: this.name,
+          address: this.address,
+          phone: this.phone,
+          email: this.email,
+          job: this.job,
+          salary: this.salary
+        }
+      )
       console.log(response.data)
       this.$router.push({name: 'Home'})
     }

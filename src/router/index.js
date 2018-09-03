@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Home from '@/components/Home'
 import Add from '@/components/Add'
+import Employee from '@/components/Employee'
 
 Vue.use(Router)
 
@@ -14,14 +15,19 @@ export default new Router({
       component: HelloWorld
     },
     {
-      path: '/home',
+      path: '/employees',
       name: 'Home',
       component: Home
     },
     {
-      path: '/add',
+      path: '/employees/add',
       name: 'Add',
       component: Add
+    },
+    {
+      path: '/employees/:name',
+      name: 'Employee',
+      component: Employee
     }
   ]
 })

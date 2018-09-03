@@ -10,6 +10,12 @@
     <button @click="search">Search</button>-->
     <input type="text" id="searchInput" v-on:keyup="searchFunction ()" placeholder="Search">
     <p/>
+    <a href='/#/add'>
+      <button>Add</button>
+    </a>
+    <button>Edit</button>
+    <button>Delete</button>
+    <p/>
     <table id="myTable">
       <tr>
         <th>
@@ -63,7 +69,7 @@
 </template>
 
 <script>
-import ReadService from '@/services/ReadService'
+import CRUDService from '@/services/CRUDService'
 export default {
   data () {
     return {
@@ -72,7 +78,7 @@ export default {
     }
   },
   async mounted () {
-    const response = await ReadService.readall()
+    const response = await CRUDService.readall()
     console.log(response.data)
     this.employees = response.data
   },

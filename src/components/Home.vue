@@ -1,74 +1,74 @@
-<!-- src/components/Home.vue -->
 <template>
   <div>
     <h1>Employees</h1>
-    <!--  <input
-      type="text"
-      name="param"
-      v-model="param"
-      placeholder="param" />
-    <button @click="search">Search</button>-->
     <input type="text" id="searchInput" v-on:keyup="searchFunction ()" placeholder="Search">
-    <button v-on:click="navigateTo({ name: 'Add'})">Add</button>
     <p/>
-    <table id="myTable">
-      <th>
-        <a v-on:click="sortTable(0)">
-          <span class="glyphicon glyphicon-sort align-right"></span>
-        </a>
-        Name
-      </th>
-      <th>
-        <a v-on:click="sortTable(1)">
-          <span class="glyphicon glyphicon-sort align-right"></span>
-        </a>
-        Address
-      </th>
-      <th>
-        <a v-on:click="sortTable(2)">
-          <span class="glyphicon glyphicon-sort align-right"></span>
-        </a>
-        Phone
-      </th>
-      <th>
-        <a v-on:click="sortTable(3)">
-          <span class="glyphicon glyphicon-sort align-right"></span>
-        </a>
-        Email
-      </th>
-      <th>
-        <a v-on:click="sortTable(4)">
-          <span class="glyphicon glyphicon-sort align-right"></span>
-        </a>
-        Job
-      </th>
-      <th>
-        <a v-on:click="sortTable(5)">
-          <span class="glyphicon glyphicon-sort align-right"></span>
-        </a>
-        Salary
-      </th>
-      <tr v-for="employee in employees"
-        :key="employee.name" v-on:click="navigateTo({
-          name: 'Employee',
-          params: {
-            id: employee._id,
-            name: employee.name,
-            address: employee.address,
-            phone: employee.phone,
-            email: employee.email,
-            job: employee.job,
-            salary: employee.salary
-          }
-        })">
-        <td>{{employee.name}}</td>
-        <td>{{employee.address}}</td>
-        <td>{{employee.phone}}</td>
-        <td>{{employee.email}}</td>
-        <td>{{employee.job}}</td>
-        <td>{{employee.salary}}</td>
-      </tr>
-    </table>
+    <div class="row">
+      <a v-on:click="navigateTo({ name: 'Add'})">
+        <span class="glyphicon glyphicon-plus"></span>
+      </a>
+    </div>
+    <p/>
+    <div class="row">
+      <table id="myTable">
+        <th>
+          <a v-on:click="sortTable(0)">
+            <span class="glyphicon glyphicon-sort"></span>
+          </a>
+          Name
+        </th>
+        <th>
+          <a v-on:click="sortTable(1)">
+            <span class="glyphicon glyphicon-sort"></span>
+          </a>
+          Address
+        </th>
+        <th>
+          <a v-on:click="sortTable(2)">
+            <span class="glyphicon glyphicon-sort"></span>
+          </a>
+          Phone
+        </th>
+        <th>
+          <a v-on:click="sortTable(3)">
+            <span class="glyphicon glyphicon-sort"></span>
+          </a>
+          Email
+        </th>
+        <th>
+          <a v-on:click="sortTable(4)">
+            <span class="glyphicon glyphicon-sort"></span>
+          </a>
+          Job
+        </th>
+        <th>
+          <a v-on:click="sortTable(5)">
+            <span class="glyphicon glyphicon-sort"></span>
+          </a>
+          Salary
+        </th>
+        <tr v-for="employee in employees"
+          :key="employee.name" v-on:click="navigateTo({
+            name: 'Employee',
+            params: {
+              id: employee._id,
+              name: employee.name,
+              address: employee.address,
+              phone: employee.phone,
+              email: employee.email,
+              job: employee.job,
+              salary: employee.salary
+            }
+          })">
+          <td>{{employee.name}}</td>
+          <td>{{employee.address}}</td>
+          <td>{{employee.phone}}</td>
+          <td>{{employee.email}}</td>
+          <td>{{employee.job}}</td>
+          <td>{{employee.salary}}</td>
+        </tr>
+      </table>
+    </div>
   </div>
 </template>
 
